@@ -24,8 +24,7 @@ void List::print_menu() {
                 delete_item();
                 break;
         case 4:
-                exit(0);
-
+                return;
         default:
                 cout << "Sorry choice not implemented yet.\n";
                 break;
@@ -94,5 +93,22 @@ void List::print_list() {
                 print_menu();
         } else {
                 cout << "Invalid argument. Quiting...\n";
+        }
+}
+
+void List::find_userlist() {
+        bool user_Found = false;
+
+        system("clear");
+        cout << "*** Welcome " << name << " ***\n";
+
+        for(int user_index = 0; user_index < (int)mainList.size(); user_index++){
+                cout << mainList[user_index][0] << '\n';
+                if(mainList[user_index][0] == name){
+                        cout << "User has been found: " << mainList[user_index][0] << '\n';
+                        list = mainList[user_index];
+                        user_Found = true;
+                        break;
+                }
         }
 }
