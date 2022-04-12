@@ -1,5 +1,5 @@
 #include "include/database.h"
-
+// vpisovanie z mainListu najprv meno a az potom list
 void Database::write(vector<vector<string>> mainList) {
         ofstream db;
         db.open("db/list.sl");
@@ -17,6 +17,7 @@ void Database::write(vector<vector<string>> mainList) {
         db.close();
 }
 
+// citanie zo suboru
 vector<vector<string>> Database::read() {
         string line;
         ifstream db;
@@ -24,16 +25,16 @@ vector<vector<string>> Database::read() {
         db.open("db/list.sl");
         
         if(db.is_open()) {
-                while(getline(db, line, '\n')) {
+                while(getline(db, line, '\n')) { // zapisuje co najde do temp var line, ktora je pouzita do vectoru
                         if(line.front() == '#') {
                                 cout << "Found a Hashtag: " << line << '\n';
                                 line.erase(line.begin());
                                 userlist.push_back(line);
 
-                        } else if(line.front() == '%') {
+                        } else if(line.front() == '%') { // % zaznamenava konec listu uzivatela
                                 cout << "Found a Percentage:  " << line << '\n';
-                                mainList.push_back(userlist);
-                                userlist.clear();
+                                mainList.push_back(userlist); // zapisanie do hlavneho 2D vectora
+                                userlist.clear(); // vycistenie na buduce pouzitie
                         } else {
                                 cout << "Found an Item: " << line << '\n';
                         }
