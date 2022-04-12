@@ -37,6 +37,7 @@ vector<vector<string>> Database::read() {
                                 userlist.clear(); // vycistenie na buduce pouzitie
                         } else {
                                 cout << "Found an Item: " << line << '\n';
+                                userlist.push_back(line);
                         }
                 }
         } else {

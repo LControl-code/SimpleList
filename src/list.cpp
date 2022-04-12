@@ -106,7 +106,9 @@ void List::find_userlist() {
                 cout << mainList[user_index][0] << '\n';
                 if(mainList[user_index][0] == name){
                         cout << "User has been found: " << mainList[user_index][0] << '\n';
+
                         list = mainList[user_index];
+                        list.erase(list.begin());
                         user_Found = true;
                         break;
                 }
